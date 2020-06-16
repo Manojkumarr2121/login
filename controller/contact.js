@@ -76,9 +76,23 @@ async delete(id){
 
 async aggregation(){
     try{
-// return await userModel.count([{
+return await contactModel.aggregate([
+    {
+    $lookup:
+    {
+      from: 'users',
+      localField: 'phone',
+      foreignField: 'password',
+      as: 'userdetails'
+    }
+    }
+    // { 
+    //     $project : 
+    //     { userdetails : 1 } } 
 
-//         $match:{
+    
+//     {
+// $match:{
 //       city:"salam"
 //     }
 // },
@@ -88,11 +102,11 @@ async aggregation(){
 //         count:{$sum:1}
 //     }
 // }
-// ])
+])
 //let result= await userModel.count({city:'tirupur'});
 
-let result= await contactModel.distinct('city');
-return {result:result};
+// let result= await contactModel.distinct('city');
+// return {result:result};
     }catch{
         return{
             status:"error",
