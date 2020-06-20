@@ -36,11 +36,12 @@ async login(username,password){
     }
         let token=this.createToken();
         this.saveToken(userInfo._id,token);
+         userInfo.token=token;
+
     return{
         status:"sucess",
         msg:'sucessfully login',
-        result:userInfo, 
-       token
+        result:userInfo 
     };
     }catch(error)
     {

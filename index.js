@@ -14,4 +14,4 @@ server.use('/user',userRoute);
 
 server.listen(config.app.port, () => {
 	console.log(`Service is listening to ${config.app.port}`);
-});
+}); 
